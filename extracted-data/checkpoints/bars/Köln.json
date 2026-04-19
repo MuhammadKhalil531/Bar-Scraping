@@ -1,0 +1,16 @@
+{
+  "barName": "Köln",
+  "status": "failed",
+  "lastCompletedPage": 2580,
+  "totalRowsWritten": 15415,
+  "expectedTotalRows": 15469,
+  "detailOkCount": 15475,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 15475,
+  "retryQueue": [],
+  "seenKeyCount": 15415,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Köln.csv",
+  "barIndex": 15,
+  "updatedAt": "2026-04-19T15:32:49.747Z"
+}

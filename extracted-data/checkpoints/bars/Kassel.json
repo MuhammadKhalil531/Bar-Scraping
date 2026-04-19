@@ -1,0 +1,16 @@
+{
+  "barName": "Kassel",
+  "status": "failed",
+  "lastCompletedPage": 313,
+  "totalRowsWritten": 1866,
+  "expectedTotalRows": 1875,
+  "detailOkCount": 1875,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 1875,
+  "retryQueue": [],
+  "seenKeyCount": 1866,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Kassel.csv",
+  "barIndex": 13,
+  "updatedAt": "2026-04-19T06:22:29.505Z"
+}

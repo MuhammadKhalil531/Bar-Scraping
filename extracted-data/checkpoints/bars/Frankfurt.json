@@ -1,0 +1,16 @@
+{
+  "barName": "Frankfurt",
+  "status": "failed",
+  "lastCompletedPage": 4032,
+  "totalRowsWritten": 24114,
+  "expectedTotalRows": 24192,
+  "detailOkCount": 24191,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 24191,
+  "retryQueue": [],
+  "seenKeyCount": 24114,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Frankfurt.csv",
+  "barIndex": 8,
+  "updatedAt": "2026-04-18T10:39:06.966Z"
+}

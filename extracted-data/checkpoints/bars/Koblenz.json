@@ -1,0 +1,16 @@
+{
+  "barName": "Koblenz",
+  "status": "failed",
+  "lastCompletedPage": 595,
+  "totalRowsWritten": 3558,
+  "expectedTotalRows": 3565,
+  "detailOkCount": 3565,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 3565,
+  "retryQueue": [],
+  "seenKeyCount": 3558,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Koblenz.csv",
+  "barIndex": 14,
+  "updatedAt": "2026-04-19T08:08:09.441Z"
+}

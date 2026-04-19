@@ -1,0 +1,16 @@
+{
+  "barName": "Braunschweig",
+  "status": "failed",
+  "lastCompletedPage": 312,
+  "totalRowsWritten": 1860,
+  "expectedTotalRows": 1868,
+  "detailOkCount": 1868,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 1868,
+  "retryQueue": [],
+  "seenKeyCount": 1860,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Braunschweig.csv",
+  "barIndex": 3,
+  "updatedAt": "2026-04-17T13:06:32.484Z"
+}

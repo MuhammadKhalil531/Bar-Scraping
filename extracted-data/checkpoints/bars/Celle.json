@@ -1,0 +1,16 @@
+{
+  "barName": "Celle",
+  "status": "failed",
+  "lastCompletedPage": 1089,
+  "totalRowsWritten": 6509,
+  "expectedTotalRows": 6534,
+  "detailOkCount": 6534,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 6534,
+  "retryQueue": [],
+  "seenKeyCount": 6509,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Celle.csv",
+  "barIndex": 6,
+  "updatedAt": "2026-04-17T17:14:41.780Z"
+}

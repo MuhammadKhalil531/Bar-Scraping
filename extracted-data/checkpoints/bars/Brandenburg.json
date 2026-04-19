@@ -1,0 +1,16 @@
+{
+  "barName": "Brandenburg",
+  "status": "failed",
+  "lastCompletedPage": 375,
+  "totalRowsWritten": 2244,
+  "expectedTotalRows": 2249,
+  "detailOkCount": 2249,
+  "detailFailedCount": 0,
+  "summaryFailedCount": 0,
+  "summaryRowsProcessed": 2249,
+  "retryQueue": [],
+  "seenKeyCount": 2244,
+  "csvPath": "/home/reelmaker/workflow/Bar-Scraping/extracted-data/Brandenburg.csv",
+  "barIndex": 2,
+  "updatedAt": "2026-04-17T12:14:43.639Z"
+}
