@@ -1,5 +1,5 @@
 import path from "path";
-import { mkdir, writeFile, readFile } from "fs/promises";
+import { mkdir, readFile } from "fs/promises";
 import {
   DETAIL_BAR_END_MAX_ATTEMPTS,
   DETAIL_FETCH_MAX_ATTEMPTS,
@@ -14,6 +14,7 @@ import {
   extractSummaryFromResultCardByIndex,
   getVisibleCardsCount,
   loadBarRecordsFromCsvFile,
+  stableRecordKey,
   writeJson,
 } from "./utils.js";
 
@@ -226,8 +227,9 @@ async function appendMissed(missed) {
   } catch {
     list = [];
   }
+  if (!Array.isArray(list)) list = [];
   list.push(...missed);
-  await writeFile(p, `${JSON.stringify(list, null, 2)}\n`, "utf8");
+  await writeJson(p, list);
 }
 
 async function readLinkMeta(page, cardIndex) {
@@ -352,6 +354,8 @@ async function scrapeResultPageFirstPass(
         ...summary,
         detailData: {},
         detailError: "no_info_link",
+        pageNumber,
+        cardIndex: i,
       };
       continue;
     }
@@ -389,6 +393,8 @@ async function scrapeResultPageFirstPass(
       ...summary,
       detailData: detailData && Object.keys(detailData).length ? detailData : {},
       infoSourceId: detailId,
+      pageNumber,
+      cardIndex: i,
     };
     if (debug && detailRawText) merged.detailRawText = detailRawText;
     records[i] = merged;
@@ -464,6 +470,8 @@ async function sweepPageRetries(
           detailData:
             detailData && Object.keys(detailData).length ? detailData : {},
           infoSourceId: detailId,
+          pageNumber,
+          cardIndex: item.cardIndex,
         };
         if (debug && detailRawText) merged.detailRawText = detailRawText;
         const idx = item.cardIndex;
@@ -497,12 +505,44 @@ async function sweepPageRetries(
       ...item.summary,
       detailData: detailData && Object.keys(detailData).length ? detailData : {},
       infoSourceId: item.detailId || item.infoLinkId,
+      pageNumber,
+      cardIndex: item.cardIndex,
     };
     if (debug && detailRawText) merged.detailRawText = detailRawText;
     const idx = item.cardIndex;
     if (idx >= 0 && idx < records.length) records[idx] = merged;
   }
   return stillPending;
+}
+
+/**
+ * Summary-only: visible card count and stable keys (no detail fetch). For mismatch audit.
+ */
+export async function extractPageSummaryKeysAudit(
+  page,
+  selectedBar,
+  pageNumber
+) {
+  const count = await getVisibleCardsCount(page);
+  const keys = [];
+  const failedCardIndexes = [];
+  for (let i = 0; i < count; i += 1) {
+    try {
+      const summary = await extractSummaryFromResultCardByIndex(
+        page,
+        i,
+        selectedBar
+      );
+      if (!summary) {
+        failedCardIndexes.push(i);
+        continue;
+      }
+      keys.push(stableRecordKey(summary));
+    } catch {
+      failedCardIndexes.push(i);
+    }
+  }
+  return { cardCount: count, keys, failedCardIndexes, pageNumber };
 }
 
 /**
@@ -596,7 +636,7 @@ export async function drainBarEndRetryQueue(
   const queue = [...barRetryQueue];
   barRetryQueue.length = 0;
 
-  // Keep summary failures so they can be recovered by a full re-scan (page 1 + dedupe) on next run.
+  // Keep summary failures so they can be recovered by targeted resume + dedupe on next run.
   const summaryOnly = queue.filter((q) => q && q.type === "summary");
   for (const s of summaryOnly) {
     missed.push({
@@ -633,6 +673,8 @@ export async function drainBarEndRetryQueue(
           detailData:
             detailData && Object.keys(detailData).length ? detailData : {},
           infoSourceId: item.detailId || item.infoLinkId,
+          pageNumber: item.pageNumber,
+          cardIndex: item.cardIndex,
         };
         if (debug && detailRawText) merged.detailRawText = detailRawText;
         recoveredRows.push(merged);
@@ -656,6 +698,8 @@ export async function drainBarEndRetryQueue(
         detailError: String(
           lastErr?.message || lastErr || "bar_end_retry_failed"
         ),
+        pageNumber: item.pageNumber,
+        cardIndex: item.cardIndex,
       });
     }
   }

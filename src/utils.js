@@ -339,27 +339,63 @@ export async function writeCsv(filePath, rows) {
 
 /**
  * Append flat CSV rows; writes header only when the file is missing or empty.
- * Skips rows whose stable key already exists in seenKeys (mutated on append).
+ * Skips only when recordDedupeFingerprint matches an existing row (true duplicate).
+ * Mutates seenState.fingerprints and seenState.byStableKey.
  */
-export async function appendCsvRecords(filePath, records, seenKeys) {
+export async function appendCsvRecords(filePath, records, seenState) {
   const headers = CSV_FLAT_COLUMN_ORDER;
   const lines = [];
   let appended = 0;
+  let deduped = 0;
+  let collisionDetected = 0;
+  const collisionKeys = new Set();
+  let rowsPreviouslyDropped = 0;
+
   for (const record of records) {
-    const k = stableRecordKey(record);
-    if (seenKeys.has(k)) {
-      // This can be either a true duplicate (resume) or a key collision; log for audit.
+    const sk = stableRecordKey(record);
+    const fp = recordDedupeFingerprint(record);
+
+    if (seenState.fingerprints.has(fp)) {
+      deduped += 1;
       console.warn(
-        `dedupe_skip key="${k}" bar="${record?.selectedBar ?? ""}" name="${record?.fullName ?? ""}"`
+        `dedupe_skip fingerprint bar="${record?.selectedBar ?? ""}" name="${record?.fullName ?? ""}"`
       );
       continue;
     }
-    seenKeys.add(k);
+
+    const fpsForSk = seenState.byStableKey.get(sk);
+    if (fpsForSk && fpsForSk.size > 0 && !fpsForSk.has(fp)) {
+      collisionDetected += 1;
+      collisionKeys.add(sk);
+      rowsPreviouslyDropped += 1;
+      const prov =
+        Number.isFinite(record?.pageNumber) && Number.isFinite(record?.cardIndex)
+          ? ` page=${record.pageNumber} card=${record.cardIndex}`
+          : "";
+      console.warn(
+        `stable_key_collision collisionDetected=true collisionKey="${sk}" rowsKept+=1 rowsPreviouslyDropped+=1 (would have skipped under stable-key-only dedupe)${prov}`
+      );
+    }
+
+    if (!seenState.byStableKey.has(sk)) seenState.byStableKey.set(sk, new Set());
+    seenState.byStableKey.get(sk).add(fp);
+    seenState.fingerprints.add(fp);
+
     const flat = recordToFlatCsvRow(record);
     lines.push(headers.map((h) => escapeCsvField(flat[h] ?? "")).join(","));
     appended += 1;
   }
-  if (!lines.length) return { appended: 0 };
+
+  if (!lines.length) {
+    return {
+      appended: 0,
+      deduped,
+      collisionDetected,
+      collisionKeys: [...collisionKeys],
+      rowsKept: 0,
+      rowsPreviouslyDropped,
+    };
+  }
   await ensureDir(path.dirname(filePath));
   let needHeader = true;
   try {
@@ -371,7 +407,14 @@ export async function appendCsvRecords(filePath, records, seenKeys) {
   const chunk =
     (needHeader ? `${headers.join(",")}\n` : "") + `${lines.join("\n")}\n`;
   await fsAppendFile(filePath, chunk, "utf8");
-  return { appended };
+  return {
+    appended,
+    deduped,
+    collisionDetected,
+    collisionKeys: [...collisionKeys],
+    rowsKept: appended,
+    rowsPreviouslyDropped,
+  };
 }
 
 /**
@@ -508,23 +551,79 @@ export function stableRecordKey(record) {
   return parts.join("|");
 }
 
+function collapseFpWhitespace(value) {
+  return String(value ?? "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function detailDataSignature(detailData) {
+  if (!detailData || typeof detailData !== "object") return "";
+  return Object.keys(detailData)
+    .sort()
+    .map((k) => `${k}=${collapseFpWhitespace(detailData[k])}`)
+    .join("|");
+}
+
 /**
- * Rebuild seen-key set from an existing per-Bar CSV (crash-safe resume).
+ * Strong row identity for dedupe / resume. `stableRecordKey` is only a prefix
+ * (grouping); several real records may share it — distinguish via content + provenance ids.
+ */
+export function recordDedupeFingerprint(record) {
+  const sk = stableRecordKey(record);
+  const flat = recordToFlatCsvRow(record);
+  const flatSig = CSV_FLAT_COLUMN_ORDER.map((h) =>
+    collapseFpWhitespace(flat[h])
+  ).join("\x1f");
+  const detailSig = detailDataSignature(record?.detailData);
+  const rawBlock = [
+    collapseFpWhitespace(record?.rawText),
+    collapseFpWhitespace(record?.infoLinkText),
+    collapseFpWhitespace(record?.infoSourceId),
+    collapseFpWhitespace(record?.detailError),
+  ].join("\x1f");
+  const body = [flatSig, detailSig, rawBlock].join("\x1e");
+  return `${sk}\x1e${body}`;
+}
+
+/** True if any committed fingerprint belongs to this summary stable key (audit vs CSV). */
+export function fingerprintSetCoversStableKey(fingerprints, stableKey) {
+  const prefix = `${stableKey}\x1e`;
+  for (const fp of fingerprints) {
+    if (fp.startsWith(prefix)) return true;
+  }
+  return false;
+}
+
+export function createEmptyDedupeState() {
+  return {
+    fingerprints: new Set(),
+    byStableKey: new Map(),
+  };
+}
+
+/**
+ * Rebuild dedupe state from an existing per-Bar CSV (crash-safe resume).
+ * Tracks full fingerprints and groups them by stableRecordKey for collision diagnostics.
  */
 export async function loadSeenKeySetFromBarCsv(csvPath) {
   const rows = await loadBarRecordsFromCsvFile(csvPath);
-  const seenKeys = new Set();
+  const state = createEmptyDedupeState();
   for (const r of rows) {
-    seenKeys.add(stableRecordKey(r));
+    const fp = recordDedupeFingerprint(r);
+    const sk = stableRecordKey(r);
+    state.fingerprints.add(fp);
+    if (!state.byStableKey.has(sk)) state.byStableKey.set(sk, new Set());
+    state.byStableKey.get(sk).add(fp);
   }
-  return seenKeys;
+  return state;
 }
 
 export function dedupeRecords(records) {
   const seen = new Map();
   for (const r of records) {
-    const k = stableRecordKey(r);
-    if (!seen.has(k)) seen.set(k, r);
+    const fp = recordDedupeFingerprint(r);
+    if (!seen.has(fp)) seen.set(fp, r);
   }
   return [...seen.values()];
 }
@@ -784,6 +883,188 @@ export async function goToNextResultsPage(page, options = {}) {
   }
 
   return false;
+}
+
+/**
+ * Jump to the first results page (paginator "first" or page label "1").
+ * Required after landing on the last page so forward-only resume logic can reach page 2+.
+ */
+export async function goToFirstResultsPage(page, options = {}) {
+  const pageDelayMs = options.pageDelayMs ?? 200;
+  const actionDelayMs = options.actionDelayMs ?? 100;
+  const maxRetries = Math.min(
+    5,
+    Math.max(1, options.maxRetries ?? 3)
+  );
+
+  const snapBefore = await getPaginatorSnapshot(page);
+  const rep0 = parseEntriesReport(snapBefore.currentReport);
+  if (rep0 && rep0.from === 1) {
+    console.log(
+      `[paginator] goToFirstResultsPage: already first range (entries ${rep0.from}–${rep0.to})`
+    );
+    return { ok: true, via: "already_first", ms: 0 };
+  }
+
+  const prevActive = snapBefore.activePage;
+  const prevCurrent = snapBefore.currentReport;
+  const prevFirst = snapBefore.firstCardPeek;
+
+  for (let attempt = 1; attempt <= maxRetries; attempt += 1) {
+    const clicked = await page
+      .evaluate((pagRoot) => {
+        const root = document.querySelector(pagRoot);
+        if (!root) return { ok: false, reason: "no paginator root" };
+        const tryClick = (el) => {
+          if (!el) return false;
+          const dis =
+            el.classList.contains("ui-state-disabled") ||
+            el.getAttribute("aria-disabled") === "true" ||
+            Boolean(el.closest?.(".ui-state-disabled"));
+          if (dis) return false;
+          try {
+            el.scrollIntoView({ block: "center", inline: "nearest" });
+          } catch (_) {}
+          el.click();
+          return true;
+        };
+        const firstBtn = root.querySelector(".ui-paginator-first");
+        if (tryClick(firstBtn)) return { ok: true, via: "first_btn" };
+        const pageLinks = [...root.querySelectorAll(".ui-paginator-page")].filter(
+          (el) => el.offsetParent !== null
+        );
+        const one = pageLinks.find((el) => /^1$/.test(el.textContent.trim()));
+        if (tryClick(one)) return { ok: true, via: "page_num_1" };
+        return { ok: false, reason: "no_first_control" };
+      }, SEL_PAGINATOR_BOTTOM)
+      .catch((e) => ({ ok: false, reason: String(e?.message || e) }));
+
+    if (!clicked?.ok) {
+      if (attempt === maxRetries) {
+        throw new Error(
+          `goToFirstResultsPage failed after ${maxRetries} attempt(s): ${clicked?.reason ?? "?"}`
+        );
+      }
+      await delay(200 + 80 * attempt);
+      continue;
+    }
+
+    try {
+      await page.waitForFunction(
+        (
+          activeSel,
+          currentSel,
+          cardSel,
+          pActive,
+          pCurrent,
+          pFirst
+        ) => {
+          const a = document.querySelector(activeSel)?.textContent?.trim() ?? "";
+          const c = document
+            .querySelector(currentSel)
+            ?.textContent?.replace(/\u00a0/g, " ")
+            .trim() ?? "";
+          const card = document.querySelector(cardSel);
+          const first = card
+            ? (card.innerText || "").replace(/\s+/g, " ").trim().slice(0, 160)
+            : "";
+          const activeChanged =
+            a !== "" && pActive !== "" && a !== pActive;
+          const currentChanged =
+            c !== "" && pCurrent !== "" && c !== pCurrent;
+          const firstChanged =
+            (first !== "" && pFirst !== "" && first !== pFirst) ||
+            (pFirst === "" && first !== "");
+          return activeChanged || currentChanged || firstChanged;
+        },
+        { timeout: 75000 },
+        SEL_PAGINATOR_ACTIVE_PAGE,
+        SEL_PAGINATOR_CURRENT,
+        SEL_RESULT_CARDS,
+        prevActive,
+        prevCurrent,
+        prevFirst
+      );
+    } catch (e) {
+      const again = await getPaginatorSnapshot(page);
+      const rep = parseEntriesReport(again.currentReport);
+      if (rep && rep.from === 1) {
+        await delay(pageDelayMs);
+        await delay(actionDelayMs);
+        return { ok: true, via: `${clicked.via}_range_ok`, ms: 0 };
+      }
+      if (attempt === maxRetries) {
+        throw new Error(
+          `goToFirstResultsPage: paginator did not update (${e?.message || e})`
+        );
+      }
+      await delay(250 * attempt);
+      continue;
+    }
+
+    await page
+      .waitForSelector(SEL_RESULT_CARDS, { visible: true, timeout: 45000 })
+      .catch(() => null);
+    await delay(pageDelayMs);
+    await delay(actionDelayMs);
+    return { ok: true, via: clicked.via, ms: 0 };
+  }
+
+  throw new Error("goToFirstResultsPage: exhausted retries");
+}
+
+/**
+ * Reliable navigation for mismatch-audit / sparse recovery: never assumes we start from page 1.
+ * Resets to page 1 first, then skips forward — safe when the session ended on the last results page.
+ */
+export async function navigateAuditToResultsPage(
+  page,
+  targetPage1Based,
+  options = {}
+) {
+  const prefix = options.logPrefix ?? "[audit-nav]";
+  const pageDelayMs = options.pageDelayMs ?? 200;
+  const actionDelayMs = options.actionDelayMs ?? 100;
+
+  let preApprox = null;
+  try {
+    preApprox = await inferCurrentResultPage1Based(page);
+  } catch (_) {}
+  const preSnap = await getPaginatorSnapshot(page);
+  console.log(
+    `${prefix} before: approxPage=${preApprox ?? "?"} active="${preSnap.activePage}" report="${(preSnap.currentReport || "").slice(0, 72)}…" → target=${targetPage1Based}`
+  );
+
+  if (targetPage1Based <= 1) {
+    console.log(`${prefix} strategy: goToFirstResultsPage only`);
+    const r = await goToFirstResultsPage(page, options);
+    let postApprox = null;
+    try {
+      postApprox = await inferCurrentResultPage1Based(page);
+    } catch (_) {}
+    console.log(
+      `${prefix} reached: approxPage=${postApprox ?? "?"} via=${r.via ?? "?"}`
+    );
+    return { strategy: "first_only", ...r };
+  }
+
+  console.log(
+    `${prefix} strategy: goToFirstResultsPage + skipForward ${targetPage1Based - 1} step(s)`
+  );
+  await goToFirstResultsPage(page, options);
+  const skip = await skipForwardToResultsStartingPage(
+    page,
+    targetPage1Based,
+    options
+  );
+  let postApprox = null;
+  try {
+    postApprox = await inferCurrentResultPage1Based(page);
+  } catch (_) {}
+  console.log(
+    `${prefix} reached: approxPage=${postApprox ?? "?"} steps=${skip.steps}`
+  );
+  return { strategy: "first_then_forward", ...skip };
 }
 
 /**
