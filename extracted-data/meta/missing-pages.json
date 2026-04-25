@@ -1,0 +1,362 @@
+{
+  "bars": {
+    "Bamberg": {
+      "barName": "Bamberg",
+      "barIndex": 0,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T10:11:22.307Z"
+    },
+    "Berlin": {
+      "barName": "Berlin",
+      "barIndex": 1,
+      "missingPageNumbers": [
+        391
+      ],
+      "failedPages": [],
+      "pagesWithMissingRows": [
+        391
+      ],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T19:09:07.918Z"
+    },
+    "Brandenburg": {
+      "barName": "Brandenburg",
+      "barIndex": 2,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T20:12:36.917Z"
+    },
+    "Braunschweig": {
+      "barName": "Braunschweig",
+      "barIndex": 3,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T21:03:48.322Z"
+    },
+    "Bremen": {
+      "barName": "Bremen",
+      "barIndex": 4,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T21:59:09.713Z"
+    },
+    "Bundesgerichtshof": {
+      "barName": "Bundesgerichtshof",
+      "barIndex": 5,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-20T22:00:19.986Z"
+    },
+    "Celle": {
+      "barName": "Celle",
+      "barIndex": 6,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-21T01:03:49.797Z"
+    },
+    "Düsseldorf": {
+      "barName": "Düsseldorf",
+      "barIndex": 7,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-21T08:14:23.272Z"
+    },
+    "Frankfurt": {
+      "barName": "Frankfurt",
+      "barIndex": 8,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-21T18:57:42.657Z"
+    },
+    "Freiburg": {
+      "barName": "Freiburg",
+      "barIndex": 9,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-21T21:18:35.358Z"
+    },
+    "Hamburg": {
+      "barName": "Hamburg",
+      "barIndex": 10,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-22T03:53:54.756Z"
+    },
+    "Hamm": {
+      "barName": "Hamm",
+      "barIndex": 11,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-22T11:14:29.681Z"
+    },
+    "Karlsruhe": {
+      "barName": "Karlsruhe",
+      "barIndex": 12,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-22T14:04:57.706Z"
+    },
+    "Kassel": {
+      "barName": "Kassel",
+      "barIndex": 13,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-22T15:03:34.857Z"
+    },
+    "Koblenz": {
+      "barName": "Koblenz",
+      "barIndex": 14,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-22T16:50:11.264Z"
+    },
+    "Köln": {
+      "barName": "Köln",
+      "barIndex": 15,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-23T00:01:50.392Z"
+    },
+    "Mecklenburg-Vorpommern": {
+      "barName": "Mecklenburg-Vorpommern",
+      "barIndex": 16,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-23T00:42:12.163Z"
+    },
+    "München": {
+      "barName": "München",
+      "barIndex": 17,
+      "missingPageNumbers": [
+        208,
+        441,
+        497,
+        738,
+        2479,
+        2480,
+        2481,
+        2482,
+        2483,
+        2484,
+        2485,
+        2486,
+        2487,
+        2927
+      ],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [
+        208,
+        441,
+        497,
+        738,
+        2479,
+        2480,
+        2481,
+        2482,
+        2483,
+        2484,
+        2485,
+        2486,
+        2487,
+        2927
+      ],
+      "auditedMissingPages": [
+        208,
+        441,
+        497,
+        738,
+        2479,
+        2480,
+        2481,
+        2482,
+        2483,
+        2484,
+        2485,
+        2486,
+        2487,
+        2927
+      ],
+      "lastMismatchAuditAt": "2026-04-23T16:02:32.019Z",
+      "updatedAt": "2026-04-24T06:57:49.971Z"
+    },
+    "Nürnberg": {
+      "barName": "Nürnberg",
+      "barIndex": 18,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T10:27:51.576Z"
+    },
+    "Oldenburg": {
+      "barName": "Oldenburg",
+      "barIndex": 19,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T12:10:55.086Z"
+    },
+    "Saarland": {
+      "barName": "Saarland",
+      "barIndex": 20,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T13:07:54.986Z"
+    },
+    "Sachsen": {
+      "barName": "Sachsen",
+      "barIndex": 21,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T15:26:54.218Z"
+    },
+    "Sachsen-Anhalt": {
+      "barName": "Sachsen-Anhalt",
+      "barIndex": 22,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T16:05:25.378Z"
+    },
+    "Schleswig-Holstein": {
+      "barName": "Schleswig-Holstein",
+      "barIndex": 23,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T18:11:44.172Z"
+    },
+    "Stuttgart": {
+      "barName": "Stuttgart",
+      "barIndex": 24,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-24T23:08:44.942Z"
+    },
+    "Thüringen": {
+      "barName": "Thüringen",
+      "barIndex": 25,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-25T00:02:21.451Z"
+    },
+    "Tübingen": {
+      "barName": "Tübingen",
+      "barIndex": 26,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-25T01:20:55.891Z"
+    },
+    "Zweibrücken": {
+      "barName": "Zweibrücken",
+      "barIndex": 27,
+      "missingPageNumbers": [],
+      "failedPages": [],
+      "pagesWithMissingRows": [],
+      "recoveryPages": [],
+      "auditedMissingPages": [],
+      "lastMismatchAuditAt": null,
+      "updatedAt": "2026-04-25T02:07:46.623Z"
+    }
+  },
+  "updatedAt": "2026-04-25T02:07:46.623Z"
+}

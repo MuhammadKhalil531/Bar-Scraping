@@ -1,0 +1,257 @@
+{
+  "bars": {
+    "Bamberg": {
+      "barName": "Bamberg",
+      "barIndex": 0,
+      "expectedTotalRows": 2838,
+      "committedUniqueRows": 2838,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 473,
+      "updatedAt": "2026-04-20T10:11:22.305Z"
+    },
+    "Berlin": {
+      "barName": "Berlin",
+      "barIndex": 1,
+      "expectedTotalRows": 17239,
+      "committedUniqueRows": 17243,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 2874,
+      "updatedAt": "2026-04-20T19:09:07.917Z"
+    },
+    "Brandenburg": {
+      "barName": "Brandenburg",
+      "barIndex": 2,
+      "expectedTotalRows": 2249,
+      "committedUniqueRows": 2249,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 375,
+      "updatedAt": "2026-04-20T20:12:36.916Z"
+    },
+    "Braunschweig": {
+      "barName": "Braunschweig",
+      "barIndex": 3,
+      "expectedTotalRows": 1868,
+      "committedUniqueRows": 1868,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 312,
+      "updatedAt": "2026-04-20T21:03:48.321Z"
+    },
+    "Bremen": {
+      "barName": "Bremen",
+      "barIndex": 4,
+      "expectedTotalRows": 1891,
+      "committedUniqueRows": 1891,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 316,
+      "updatedAt": "2026-04-20T21:59:09.711Z"
+    },
+    "Bundesgerichtshof": {
+      "barName": "Bundesgerichtshof",
+      "barIndex": 5,
+      "expectedTotalRows": 44,
+      "committedUniqueRows": 44,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 8,
+      "updatedAt": "2026-04-20T22:00:19.984Z"
+    },
+    "Celle": {
+      "barName": "Celle",
+      "barIndex": 6,
+      "expectedTotalRows": 6534,
+      "committedUniqueRows": 6534,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 1089,
+      "updatedAt": "2026-04-21T01:03:49.796Z"
+    },
+    "Düsseldorf": {
+      "barName": "Düsseldorf",
+      "barIndex": 7,
+      "expectedTotalRows": 15845,
+      "committedUniqueRows": 15850,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 2641,
+      "updatedAt": "2026-04-21T08:14:23.270Z"
+    },
+    "Frankfurt": {
+      "barName": "Frankfurt",
+      "barIndex": 8,
+      "expectedTotalRows": 24191,
+      "committedUniqueRows": 24191,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 4032,
+      "updatedAt": "2026-04-21T18:57:42.656Z"
+    },
+    "Freiburg": {
+      "barName": "Freiburg",
+      "barIndex": 9,
+      "expectedTotalRows": 3806,
+      "committedUniqueRows": 3806,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 635,
+      "updatedAt": "2026-04-21T21:18:35.356Z"
+    },
+    "Hamburg": {
+      "barName": "Hamburg",
+      "barIndex": 10,
+      "expectedTotalRows": 13578,
+      "committedUniqueRows": 13578,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 2263,
+      "updatedAt": "2026-04-22T03:53:54.754Z"
+    },
+    "Hamm": {
+      "barName": "Hamm",
+      "barIndex": 11,
+      "expectedTotalRows": 14865,
+      "committedUniqueRows": 14865,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 2478,
+      "updatedAt": "2026-04-22T11:14:29.679Z"
+    },
+    "Karlsruhe": {
+      "barName": "Karlsruhe",
+      "barIndex": 12,
+      "expectedTotalRows": 5228,
+      "committedUniqueRows": 5228,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 872,
+      "updatedAt": "2026-04-22T14:04:57.704Z"
+    },
+    "Kassel": {
+      "barName": "Kassel",
+      "barIndex": 13,
+      "expectedTotalRows": 1875,
+      "committedUniqueRows": 1875,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 313,
+      "updatedAt": "2026-04-22T15:03:34.855Z"
+    },
+    "Koblenz": {
+      "barName": "Koblenz",
+      "barIndex": 14,
+      "expectedTotalRows": 3566,
+      "committedUniqueRows": 3566,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 595,
+      "updatedAt": "2026-04-22T16:50:11.262Z"
+    },
+    "Köln": {
+      "barName": "Köln",
+      "barIndex": 15,
+      "expectedTotalRows": 15469,
+      "committedUniqueRows": 15469,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 2579,
+      "updatedAt": "2026-04-23T00:01:50.390Z"
+    },
+    "Mecklenburg-Vorpommern": {
+      "barName": "Mecklenburg-Vorpommern",
+      "barIndex": 16,
+      "expectedTotalRows": 1333,
+      "committedUniqueRows": 1333,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 223,
+      "updatedAt": "2026-04-23T00:42:12.162Z"
+    },
+    "München": {
+      "barName": "München",
+      "barIndex": 17,
+      "expectedTotalRows": 27508,
+      "committedUniqueRows": 27544,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 4585,
+      "updatedAt": "2026-04-24T06:57:49.969Z"
+    },
+    "Nürnberg": {
+      "barName": "Nürnberg",
+      "barIndex": 18,
+      "expectedTotalRows": 5583,
+      "committedUniqueRows": 5583,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 931,
+      "updatedAt": "2026-04-24T10:27:51.574Z"
+    },
+    "Oldenburg": {
+      "barName": "Oldenburg",
+      "barIndex": 19,
+      "expectedTotalRows": 2825,
+      "committedUniqueRows": 2825,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 471,
+      "updatedAt": "2026-04-24T12:10:55.084Z"
+    },
+    "Saarland": {
+      "barName": "Saarland",
+      "barIndex": 20,
+      "expectedTotalRows": 1493,
+      "committedUniqueRows": 1493,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 249,
+      "updatedAt": "2026-04-24T13:07:54.984Z"
+    },
+    "Sachsen": {
+      "barName": "Sachsen",
+      "barIndex": 21,
+      "expectedTotalRows": 4609,
+      "committedUniqueRows": 4609,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 769,
+      "updatedAt": "2026-04-24T15:26:54.216Z"
+    },
+    "Sachsen-Anhalt": {
+      "barName": "Sachsen-Anhalt",
+      "barIndex": 22,
+      "expectedTotalRows": 1429,
+      "committedUniqueRows": 1429,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 239,
+      "updatedAt": "2026-04-24T16:05:25.376Z"
+    },
+    "Schleswig-Holstein": {
+      "barName": "Schleswig-Holstein",
+      "barIndex": 23,
+      "expectedTotalRows": 4102,
+      "committedUniqueRows": 4102,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 684,
+      "updatedAt": "2026-04-24T18:11:44.170Z"
+    },
+    "Stuttgart": {
+      "barName": "Stuttgart",
+      "barIndex": 24,
+      "expectedTotalRows": 9351,
+      "committedUniqueRows": 9351,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 1559,
+      "updatedAt": "2026-04-24T23:08:44.939Z"
+    },
+    "Thüringen": {
+      "barName": "Thüringen",
+      "barIndex": 25,
+      "expectedTotalRows": 1727,
+      "committedUniqueRows": 1727,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 288,
+      "updatedAt": "2026-04-25T00:02:21.449Z"
+    },
+    "Tübingen": {
+      "barName": "Tübingen",
+      "barIndex": 26,
+      "expectedTotalRows": 2199,
+      "committedUniqueRows": 2199,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 367,
+      "updatedAt": "2026-04-25T01:20:55.889Z"
+    },
+    "Zweibrücken": {
+      "barName": "Zweibrücken",
+      "barIndex": 27,
+      "expectedTotalRows": 1442,
+      "committedUniqueRows": 1442,
+      "pageSizeHint": 6,
+      "expectedPagesHint": 241,
+      "updatedAt": "2026-04-25T02:07:46.620Z"
+    }
+  },
+  "updatedAt": "2026-04-25T02:07:46.621Z"
+}

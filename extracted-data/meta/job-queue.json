@@ -1,0 +1,257 @@
+{
+  "version": 1,
+  "updatedAt": "2026-04-25T02:07:46.625Z",
+  "jobs": [
+    {
+      "barIndex": 0,
+      "barLabel": "Bamberg",
+      "barValue": "BA",
+      "status": "pending",
+      "lastError": null,
+      "completedAt": null
+    },
+    {
+      "barIndex": 1,
+      "barLabel": "Berlin",
+      "barValue": "B",
+      "status": "failed",
+      "lastError": "count_mismatch_or_pending_retries",
+      "completedAt": "2026-04-20T19:09:07.920Z",
+      "startedAt": "2026-04-20T11:30:42.777Z"
+    },
+    {
+      "barIndex": 2,
+      "barLabel": "Brandenburg",
+      "barValue": "BRB",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-20T20:12:36.918Z",
+      "startedAt": "2026-04-20T19:09:12.006Z"
+    },
+    {
+      "barIndex": 3,
+      "barLabel": "Braunschweig",
+      "barValue": "BS",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-20T21:03:48.323Z",
+      "startedAt": "2026-04-20T20:12:40.403Z"
+    },
+    {
+      "barIndex": 4,
+      "barLabel": "Bremen",
+      "barValue": "HB",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-20T21:59:09.714Z",
+      "startedAt": "2026-04-20T21:03:51.860Z"
+    },
+    {
+      "barIndex": 5,
+      "barLabel": "Bundesgerichtshof",
+      "barValue": "BGH",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-20T22:00:19.987Z",
+      "startedAt": "2026-04-20T21:59:13.226Z"
+    },
+    {
+      "barIndex": 6,
+      "barLabel": "Celle",
+      "barValue": "CE",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-21T01:03:49.798Z",
+      "startedAt": "2026-04-20T22:00:23.373Z"
+    },
+    {
+      "barIndex": 7,
+      "barLabel": "Düsseldorf",
+      "barValue": "D",
+      "status": "failed",
+      "lastError": "count_mismatch_or_pending_retries",
+      "completedAt": "2026-04-21T08:14:23.273Z",
+      "startedAt": "2026-04-21T01:03:53.309Z"
+    },
+    {
+      "barIndex": 8,
+      "barLabel": "Frankfurt",
+      "barValue": "F",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-21T18:57:42.659Z",
+      "startedAt": "2026-04-21T08:14:26.861Z"
+    },
+    {
+      "barIndex": 9,
+      "barLabel": "Freiburg",
+      "barValue": "FR",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-21T21:18:35.359Z",
+      "startedAt": "2026-04-21T18:57:46.038Z"
+    },
+    {
+      "barIndex": 10,
+      "barLabel": "Hamburg",
+      "barValue": "HH",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-22T03:53:54.757Z",
+      "startedAt": "2026-04-21T21:18:38.958Z"
+    },
+    {
+      "barIndex": 11,
+      "barLabel": "Hamm",
+      "barValue": "HAM",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-22T11:14:29.683Z",
+      "startedAt": "2026-04-22T03:53:58.353Z"
+    },
+    {
+      "barIndex": 12,
+      "barLabel": "Karlsruhe",
+      "barValue": "KA",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-22T14:04:57.707Z",
+      "startedAt": "2026-04-22T11:14:33.147Z"
+    },
+    {
+      "barIndex": 13,
+      "barLabel": "Kassel",
+      "barValue": "KS",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-22T15:03:34.858Z",
+      "startedAt": "2026-04-22T14:05:01.184Z"
+    },
+    {
+      "barIndex": 14,
+      "barLabel": "Koblenz",
+      "barValue": "KO",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-22T16:50:11.265Z",
+      "startedAt": "2026-04-22T15:03:38.488Z"
+    },
+    {
+      "barIndex": 15,
+      "barLabel": "Köln",
+      "barValue": "K",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-23T00:01:50.393Z",
+      "startedAt": "2026-04-22T16:50:14.867Z"
+    },
+    {
+      "barIndex": 16,
+      "barLabel": "Mecklenburg-Vorpommern",
+      "barValue": "SN",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-23T00:42:12.165Z",
+      "startedAt": "2026-04-23T00:01:54.054Z"
+    },
+    {
+      "barIndex": 17,
+      "barLabel": "München",
+      "barValue": "M",
+      "status": "failed",
+      "lastError": "count_mismatch_or_pending_retries",
+      "completedAt": "2026-04-24T06:57:49.972Z",
+      "startedAt": "2026-04-23T00:42:15.844Z"
+    },
+    {
+      "barIndex": 18,
+      "barLabel": "Nürnberg",
+      "barValue": "N",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T10:27:51.577Z",
+      "startedAt": "2026-04-24T06:57:53.768Z"
+    },
+    {
+      "barIndex": 19,
+      "barLabel": "Oldenburg",
+      "barValue": "OL",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T12:10:55.088Z",
+      "startedAt": "2026-04-24T10:27:55.379Z"
+    },
+    {
+      "barIndex": 20,
+      "barLabel": "Saarland",
+      "barValue": "SB",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T13:07:54.988Z",
+      "startedAt": "2026-04-24T12:10:58.817Z"
+    },
+    {
+      "barIndex": 21,
+      "barLabel": "Sachsen",
+      "barValue": "DD",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T15:26:54.219Z",
+      "startedAt": "2026-04-24T13:07:58.696Z"
+    },
+    {
+      "barIndex": 22,
+      "barLabel": "Sachsen-Anhalt",
+      "barValue": "MD",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T16:05:25.380Z",
+      "startedAt": "2026-04-24T15:26:57.856Z"
+    },
+    {
+      "barIndex": 23,
+      "barLabel": "Schleswig-Holstein",
+      "barValue": "SL",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T18:11:44.174Z",
+      "startedAt": "2026-04-24T16:05:29.290Z"
+    },
+    {
+      "barIndex": 24,
+      "barLabel": "Stuttgart",
+      "barValue": "S",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-24T23:08:44.943Z",
+      "startedAt": "2026-04-24T18:11:48.219Z"
+    },
+    {
+      "barIndex": 25,
+      "barLabel": "Thüringen",
+      "barValue": "EF",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-25T00:02:21.452Z",
+      "startedAt": "2026-04-24T23:08:49.068Z"
+    },
+    {
+      "barIndex": 26,
+      "barLabel": "Tübingen",
+      "barValue": "TÜ",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-25T01:20:55.893Z",
+      "startedAt": "2026-04-25T00:02:25.053Z"
+    },
+    {
+      "barIndex": 27,
+      "barLabel": "Zweibrücken",
+      "barValue": "ZW",
+      "status": "completed",
+      "lastError": null,
+      "completedAt": "2026-04-25T02:07:46.625Z",
+      "startedAt": "2026-04-25T01:20:59.829Z"
+    }
+  ]
+}
